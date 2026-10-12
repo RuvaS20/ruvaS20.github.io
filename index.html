@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruvarashe Sadya Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+  :root { --heading-font: 'Faculty Glyphic'; }
+
+  /* Layout is drawn on a 1532px-wide grid (the reference image size)
+     and scales down to fit narrower screens. */
+  :root {
+    --u: min(1px, calc(100vw / 1532));
+    --bg: #f3f3f3;
+    --sage: #d9e6d6;
+    --sage-dark: #a9c9a3;
+    --ink: #1e1e1e;
+    --text: #555555;
+    --rule: #b9b9b9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+  }
+
+  .page {
+    position: relative;
+    width: calc(1532 * var(--u));
+    margin: 0 auto;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  /* Header area keeps the original fixed positions */
+  .top {
+    position: relative;
+    height: calc(581 * var(--u));
+  }
+  .top > * { position: absolute; }
+
+  /* Sage block with rounded top-left corner */
+  .sage-block {
+    left: calc(60 * var(--u));
+    top: calc(42 * var(--u));
+    width: calc(375 * var(--u));
+    height: calc(350 * var(--u));
+    background: var(--sage);
+    border-top-left-radius: calc(140 * var(--u)) calc(150 * var(--u));
+  }
+
+  /* Decorative serif headings */
+  .deco {
+    font-family: var(--heading-font), serif;
+    font-weight: 400;
+    color: var(--ink);
+    text-transform: uppercase;
+    -webkit-text-stroke: calc(1.2 * var(--u)) var(--ink);
+    white-space: nowrap;
+  }
+
+  .name {
+    left: calc(243 * var(--u));
+    top: calc(75 * var(--u));
+    font-size: calc(68 * var(--u));
+    letter-spacing: calc(1 * var(--u));
+    line-height: 1;
+  }
+
+  .title {
+    left: calc(243 * var(--u));
+    top: calc(183 * var(--u));
+    display: flex;
+    align-items: center;
+    gap: calc(20 * var(--u));
+  }
+  .title .bar {
+    width: calc(78 * var(--u));
+    height: calc(4 * var(--u));
+    background: var(--ink);
+  }
+  .title span {
+    font-weight: 700;
+    font-size: calc(25 * var(--u));
+    letter-spacing: calc(5 * var(--u));
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  /* Photo */
+  .photo {
+    left: calc(123 * var(--u));
+    top: calc(269 * var(--u));
+    width: calc(247 * var(--u));
+    height: calc(247 * var(--u));
+    border-radius: 50%;
+    background: var(--sage-dark);
+    overflow: hidden;
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Section headings */
+  .h-section { font-size: calc(34 * var(--u)); line-height: 1; }
+  .h-profile { left: calc(508 * var(--u)); top: calc(255 * var(--u)); }
+
+  /* Body text */
+  .body-text {
+    font-size: calc(19.5 * var(--u));
+    white-space: nowrap;
+  }
+
+  .profile-text {
+    left: calc(508 * var(--u));
+    top: calc(325 * var(--u));
+    line-height: calc(37.5 * var(--u));
+  }
+
+  /* Lower two-column area flows so it can hold any amount of content;
+     spacing mirrors the original grid. */
+  .lower {
+    display: grid;
+    grid-template-columns: calc(375 * var(--u)) calc(1059 * var(--u));
+    margin-left: calc(60 * var(--u));
+    padding-bottom: calc(110 * var(--u));
+  }
+  .col-left { padding-right: calc(25 * var(--u)); }
+  .col-right {
+    border-left: calc(1.5 * var(--u)) solid var(--rule);
+    padding-left: calc(73.5 * var(--u));
+    padding-top: calc(2 * var(--u));
+  }
+
+  .section + .section { margin-top: calc(50 * var(--u)); }
+  .rule { height: calc(1.5 * var(--u)); background: var(--rule); }
+  .col-left .rule { width: calc(298 * var(--u)); }
+  .section .h-section { margin-top: calc(66 * var(--u)); margin-bottom: calc(32 * var(--u)); }
+
+  .contact-text {
+    line-height: calc(39.5 * var(--u));
+  }
+  .contact-text a { color: inherit; text-decoration: none; }
+  .contact-text a:hover { text-decoration: underline; }
+  .contact-text .ic {
+    width: calc(20 * var(--u));
+    height: calc(20 * var(--u));
+    margin-right: calc(10 * var(--u));
+    vertical-align: calc(-3 * var(--u));
+    fill: var(--ink);
+  }
+
+  .edu {
+    font-size: calc(19.5 * var(--u));
+    line-height: calc(32 * var(--u));
+  }
+  .edu + .edu { margin-top: calc(26 * var(--u)); }
+  .edu h4 { font-weight: 700; color: var(--ink); font-size: calc(20 * var(--u)); }
+
+  /* Experience */
+  .job + .job { margin-top: calc(40 * var(--u)); }
+
+  .job-meta {
+    font-size: calc(23 * var(--u));
+    line-height: calc(36 * var(--u));
+    margin-bottom: calc(2 * var(--u));
+  }
+  .job-meta b { font-weight: 700; color: var(--ink); margin-right: calc(10 * var(--u)); }
+  .job-meta i { color: #333; white-space: nowrap; }
+
+  .bullets { list-style: none; }
+  .bullets li {
+    position: relative;
+    padding-left: calc(25 * var(--u));
+    padding-bottom: calc(6 * var(--u));
+    font-size: calc(19.5 * var(--u));
+    line-height: calc(32 * var(--u));
+  }
+  .bullets li::before {
+    content: '';
+    position: absolute;
+    left: calc(1 * var(--u));
+    top: calc(16 * var(--u));
+    width: calc(6 * var(--u));
+    height: calc(6 * var(--u));
+    border-radius: 50%;
+    background: var(--text);
+    transform: translateY(-50%);
+  }
+  .bullets li b { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="top">
+      <div class="sage-block"></div>
+
+      <h1 class="deco name">Ruvarashe Sadya</h1>
+      <div class="title"><div class="bar"></div><span>AI RESEARCHER</span></div>
+
+      <div class="photo">
+        <img src="img.jpeg" alt="Ruvarashe Sadya">
+      </div>
+
+      <h2 class="deco h-section h-profile">Profile</h2>
+      <p class="body-text profile-text">
+        Computer Science graduate (Ashesi University, Magna Cum Laude) and co-founder building technology for<br>
+        equitable digital health and education. Experienced in machine learning, full-stack development and<br>
+        program management across 50+ countries. Research interests span medical imaging, low-resource NLP<br>
+        for African languages, and technology that widens access to health and education for underserved<br>
+        communities.
+      </p>
+    </div>
+
+    <div class="lower">
+
+      <div class="col-left">
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Contact</h2>
+          <p class="body-text contact-text">
+            <svg class="ic" viewBox="0 0 24 24" aria-label="Location"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Accra, Ghana<br>
+            <svg class="ic" viewBox="0 0 24 24" aria-label="Email"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:ruvarashe.sadya@gmail.com">ruvarashe.sadya@gmail.com</a><br>
+            <svg class="ic" viewBox="0 0 24 24" aria-label="LinkedIn"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 18.3V10H5.7v8.3h2.6zM7 8.8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11.3 9.5v-4.6c0-2.4-1.3-3.6-3.1-3.6-1.4 0-2.1.8-2.4 1.3V10h-2.6v8.3h2.6v-4.4c0-1.2.5-2 1.6-2 1 0 1.3.8 1.3 2v4.4h2.6z"/></svg><a href="https://linkedin.com/in/ruvarashe-sadya" target="_blank">linkedin.com/in/ruvarashe-sadya</a><br>
+            <svg class="ic" viewBox="0 0 16 16" aria-label="GitHub"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><a href="https://github.com/RuvaS20" target="_blank">github.com/RuvaS20</a>
+          </p>
+        </div>
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Education</h2>
+          <div class="edu">
+            <h4>BSC. COMPUTER SCIENCE</h4>
+            <p>Ashesi University, Accra, Ghana<br>Graduated May 2026<br>CGPA: 3.83 / 4.00 (Magna Cum Laude)</p>
+          </div>
+          <div class="edu">
+            <h4>AWARDS</h4>
+            <ul class="bullets">
+              <li><b>2026</b> Outstanding Computer Science Capstone Project Award</li>
+              <li><b>2023–26</b> Dean’s List</li>
+              <li>Full Tuition and Housing Scholarship (Ashesi Financial Aid)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Honors</h2>
+          <ul class="bullets">
+            <li><b>2026</b> LEAP Africa Fellow, Entrepreneurship Track</li>
+            <li><b>2025</b> Google Generation Scholar</li>
+            <li><b>2025</b> Harvard Alumni Entrepreneur Bootcamp Participant</li>
+            <li><b>2024</b> Technovation Alumni Changemaker Award</li>
+            <li><b>2024</b> Youth Speaker, UNESCO Continental Conference in STEM, African Union</li>
+            <li><b>2023</b> TEDx Speaker, Ashesi University</li>
+            <li><b>2020</b> World Semifinalist, Technovation Girls</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Skills</h2>
+          <div class="edu">
+            <h4>TECHNICAL</h4>
+            <p>Python, JavaScript/TypeScript, SQL; TensorFlow, PyTorch, CNNs, NLP; React, Node.js, FastAPI, PostgreSQL, Docker, Google Cloud, Git</p>
+          </div>
+          <div class="edu">
+            <h4>LANGUAGES</h4>
+            <p>English (native), Shona (native)</p>
+          </div>
+          <div class="edu">
+            <h4>COURSES</h4>
+            <p>Digital Health Co-Design, King’s College London (2026); Introduction to Effective Altruism (2026); Future of AI (2026); Yale Young Global Scholar (2020); Yale Young African Scholar (2019)</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-right">
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Professional Experience</h2>
+
+          <div class="job">
+            <div class="job-meta"><b>FACULTY INTERN</b><i>Ashesi University | Accra, Ghana | Sep 2026 - Present</i></div>
+            <ul class="bullets">
+              <li>Support students and faculty in the Intermediate Programming and Introduction to AI courses.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>CO-FOUNDER &amp; CTO</b><i>SheaGlow | Accra, Ghana | Jan 2025 - Present</i></div>
+            <ul class="bullets">
+              <li>Build an AI-powered dermatology platform for melanin-rich skin, leading ML pipelines (TensorFlow) and frontend development (React/TypeScript) to connect patients with specialists; participated in the Ashesi Health &amp; Care Initiative Incubator.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>PROGRAM SUPPORT INTERN</b><i>Technovation | USA (Remote) | Sep 2023 - Sep 2026</i></div>
+            <ul class="bullets">
+              <li>Assumed Program Manager responsibilities for three months, managing communications with 200+ Chapter Ambassadors, and analyzed program data across 50+ countries (R, Tableau) to co-author impact reports for UNICEF.</li>
+              <li>Mapped 200+ organizations for the AI Venture Accelerator with UNICEF Generation Unlimited, driving 200+ applicants globally.</li>
+              <li>Built curriculum and operations tools for the 20-week program, including an automated grant tracker (Google Apps Script), a coded session planner, and low-code/GenAI integrations.</li>
+              <li>Developed two WordPress/LearnDash courses and localized coding curriculum into African languages using Articulate 360, reaching 20,000+ girls and 150+ Chapter Ambassadors annually.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>WORKSHOP LEAD &amp; WEB DEVELOPER</b><i>Parantaa Africa Foundation | Zimbabwe | Jun 2022 - Sep 2023</i></div>
+            <ul class="bullets">
+              <li>Led a digital-skills workshop for 30 low-income high school students, providing remote-learning devices and training, and built the organisation’s website (HTML, CSS, JavaScript).</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>STEM TUTOR</b><i>ESBF Tutors | Harare, Zimbabwe | Apr 2022 - Jun 2022</i></div>
+            <ul class="bullets">
+              <li>Tutored six students in Math and Biology, strengthening subject knowledge and building confidence.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>JUNIOR FACULTY MEMBER</b><i>USAP Community School | Ruwa, Zimbabwe | Aug 2021 - Dec 2021</i></div>
+            <ul class="bullets">
+              <li>Taught Chemistry to 69 high-achieving, low-income students through revision classes, one-on-ones, and exam prep; guided college applications and student wellbeing.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Projects</h2>
+
+          <div class="job">
+            <div class="job-meta"><b>LYNED COLLABORATIVE SVG EDITOR</b><i>Co-developer (Capstone) | Dec 2025 - Present</i></div>
+            <ul class="bullets">
+              <li>Built an image-to-vector pipeline and a real-time collaborative editor, tested with user studies and automated checks. Won the Outstanding Computer Science Capstone Project Award.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>DR ROOTS AI CHATBOT</b><i>Developer | Jul 2024 - Present</i></div>
+            <ul class="bullets">
+              <li>Built a CNN plant-recognition system for indigenous Zimbabwean medicinal plants and deployed it as a WhatsApp chatbot. Won the Technovation Alumni Changemaker Award.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>ZVIREVO SHONA WORD EMBEDDINGS</b><i>Co-developer | May 2024 - May 2025</i></div>
+            <ul class="bullets">
+              <li>Built Word2Vec and FastText embeddings for Shona, a low-resource language, and released an open-source REST API for other researchers to use.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="rule"></div>
+          <h2 class="deco h-section">Leadership &amp; Service</h2>
+
+          <div class="job">
+            <div class="job-meta"><b>LEAD ORGANISER</b><i>TEDx Ashesi University | Aug 2024 - Nov 2025</i></div>
+            <ul class="bullets">
+              <li>Led a 30-person team across fundraising, curation and event management and raised GHS30,000+ for the university’s speaker series to spotlight African innovators.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>CO-FOUNDER</b><i>Tech4Impact | Ghana | Jan 2025 - May 2025</i></div>
+            <ul class="bullets">
+              <li>Taught digital skills and ethics to 20+ students over a 40-hour programme.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-meta"><b>STUDENT AMBASSADOR &amp; MENTOR</b><i>Technovation Girls Zimbabwe | 2020 - 2022</i></div>
+            <ul class="bullets">
+              <li>Recruited, supported and mentored girls competing in the Technovation Girls program.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
